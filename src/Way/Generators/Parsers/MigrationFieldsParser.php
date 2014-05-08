@@ -46,7 +46,7 @@ class MigrationFieldsParser {
             // be our decorators
             $decorators = $chunks;
 
-            $parsed[$index] = ['field' => $property, 'type' => $type];
+            $parsed[$index] = ['field' => trim($property), 'type' => trim($type)];
 
             if (isset($args)) $parsed[$index]['args'] = $args;
             if ($decorators) $parsed[$index]['decorators'] = $decorators;
