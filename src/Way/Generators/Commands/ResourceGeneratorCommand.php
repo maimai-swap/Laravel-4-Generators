@@ -113,14 +113,19 @@ class ResourceGeneratorCommand extends Command {
     {
         $collection = $this->getTableName($resource);
         $modelName = $this->getModelName($resource);
+        $controllerName = $this->getControllerName($resource);
 
         if ($this->confirm("Do you want me to create views for this $modelName resource? [yes|no]"))
         {
+            $fields = $this->option('fields');
             foreach(['index', 'show', 'create', 'edit'] as $viewName)
             {
                 $viewName = "{$collection}.{$viewName}";
-
-                $this->call('generate:view', compact('viewName'));
+                $this->call('generate:view', [
+                    'viewName' => $viewName,
+                    '--fields' => $this->option('fields'),
+                    '--resource' => $resource,
+                ]);
             }
         }
     }

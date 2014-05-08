@@ -1,0 +1,26 @@
+@extends('layouts.default')
+
+@section('main')
+
+<!-- shows -->
+<h1>Show $MODEL$</h1>
+
+<p>{{ link_to_route('$COLLECTION$.index', 'Return to all $COLLECTION$') }}</p>
+
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				$HEADINGS$
+			</tr>
+		</thead>
+
+		<tbody>
+			@foreach ($$COLLECTION$ as $$RESOURCE$)
+				<tr>
+					$FIELD_VALUES$
+				</tr>
+			@endforeach
+		</tbody>
+	</table>
+
+@stop

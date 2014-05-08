@@ -73,8 +73,8 @@ class GeneratorsServiceProvider extends ServiceProvider {
         $this->app['generate.view'] = $this->app->share(function($app)
         {
             $generator = $this->app->make('Way\Generators\Generator');
-
-            return new ViewGeneratorCommand($generator);
+            $parser = $this->app->make('Way\Generators\Parsers\MigrationFieldsParser');
+            return new ViewGeneratorCommand($generator, $parser);
         });
 
         $this->commands('generate.view');

@@ -1,0 +1,17 @@
+@extends('layouts.default')
+
+@section('main')
+
+Edit $MODEL$
+{{ Form::model($$RESOURCE$, array('method' => 'PATCH', 'route' => array('$COLLECTION$.update', $RESOURCE$->id))) }}
+$FIELDS$
+    {{ Form::submit('Update', array('class' => 'btn btn-info')) }}
+    {{ link_to_route('$COLLECTION$.show', 'Cancel', $$RESOURCE$->id, array('class' => 'btn')) }}
+{{ Form::close() }}
+
+@if ($errors->any())
+    {{ implode('', $errors->all('<li class="error">:message</li>')) }}
+@endif
+
+
+@stop

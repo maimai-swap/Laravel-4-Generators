@@ -81,8 +81,8 @@ abstract class GeneratorCommand extends Command {
     {
         if ($path = $this->option($option))
         {
-            return $path;
-        }
+                return $path;
+            }
 
         return Config::get("generators::config.{$configName}");
     }

@@ -1,0 +1,14 @@
+@extends('layouts.default')
+
+@section('main')
+
+<!-- for Create -->
+<h1>Create $MODEL$</h1>
+
+{{ Form::open(array('route' => '$COLLECTION$.store')) }}
+$FIELDS$
+    {{ Form::submit('Submit', array('class' => 'btn btn-info')) }}
+
+{{ Form::close() }}
+
+@stop
